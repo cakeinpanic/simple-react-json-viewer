@@ -18,6 +18,7 @@ export class App extends React.Component {
         return (
             <div className="App">
                 <Input onDataLoaded={this.dataLoaded}/>
+                {/*<span>{JSON.stringify(this.state.json)}</span>*/}
                 <Json className="json-container" json={this.state.json}/>
             </div>
         )

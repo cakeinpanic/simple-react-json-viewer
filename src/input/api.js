@@ -21,7 +21,7 @@ export function request(url) {
                     // handle success
                     // console.log(response);
                     //  return JSON;
-                    return response
+                    return Array.isArray(response) ? {json:response}: response;
                 })
                 .finally(function () {
                     // always executed

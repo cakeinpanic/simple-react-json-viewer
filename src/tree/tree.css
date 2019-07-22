@@ -2,6 +2,12 @@
     position: relative;
     text-align: left;
 }
-.subTree {
 
+.subTree {
+    position: relative;
+}
+
+.key {
+    font-weight: bold;
+margin-right: 10px;
 }

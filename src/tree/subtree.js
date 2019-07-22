@@ -12,37 +12,24 @@ export class JsonSubTree extends React.Component {
         this.setState(s => ({folded: !s.folded}))
     }
 
-    renderItem(keyName) {
-        const item = this.props.json[keyName];
-        const shift = this.props.shift || 0;
-        let style = {left: shift * 10 + 'px'};
-        console.log(keyName, item);
-        if (typeof item === 'object' || Array.isArray(item)) {
-            return (
-                <div className="json" style={style}>
-                    <span onClick={this.fold.bind(this)}>{keyName}</span>
-                    :{this.state.folded ? '...' : <JsonSubTree shift={shift + 1}  json={item}/>}
-                </div>
-            );
-        }
-
-        return (<div className="json" style={style} key={keyName}>{keyName}:{item}</div>)
-    }
-
     getDataSpan() {
         const {json} = this.props;
+        const shift = this.props.shift || 0;
         if (Array.isArray(json)) {
             return (<span>[
                 {
                     json.map((el, i) => (
-                        <span key={i}><JsonSubTree className="json" json={el}/>, </span>))
+                        <span key={i}><JsonSubTree shift={shift + 1} className="json"
+                                                   json={el}/>, </span>))
                 }
                           ]
             </span>);
         }
 
         if (typeof json === 'object') {
-            return Object.keys(json).map(this.renderItem.bind(this))
+            return Object.keys(json).map((el, i) => (
+                <JsonSubTree className="json" shift={shift + 1} keyName={el} json={json[el]} key={i}/>
+            ))
         }
 
         return (
@@ -51,8 +38,19 @@ export class JsonSubTree extends React.Component {
     }
 
     render() {
-        const {keyName} = this.props;
-        return (<div className="subTree">{keyName}:{this.getDataSpan()}</div>)
+        const {keyName, json} = this.props;
+        let style = {left:  15 + 'px'};
+        if(!json){
+            return <span></span>
+        }
+        if (!keyName && typeof  json !== 'object') {
+            return <span className="data">{json}</span>
+        }
+
+        return (<div style={style} className="subTree">
+            {(keyName ? <span className="key">{keyName}:</span>: null)}
+            <span className="data">{this.getDataSpan()}</span>
+        </div>)
 
     }
 }

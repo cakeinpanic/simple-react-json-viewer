@@ -16,7 +16,7 @@ export class Json extends React.Component {
     render() {
         const {json} = this.props;
         //todo hanle if initial is not obj
-        var arr = Object.keys(json);
+        var arr = Array.isArray(json) ? json : Object.keys(json);
         return (
             <div className="json">
                 {
