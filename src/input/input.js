@@ -1,5 +1,5 @@
 import React from 'react';
-import {request} from "./api";
+import {JSON, request} from "./api";
 import './input.css'
 export class Input extends React.Component {
     constructor(props) {
@@ -12,6 +12,9 @@ export class Input extends React.Component {
 
     }
 
+    componentDidMount(){
+        this.onDataLoaded(JSON);
+    }
     handleChange(event) {
         this.setState({value: event.target.value});
     }

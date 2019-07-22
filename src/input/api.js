@@ -1,5 +1,5 @@
 const axios = require('axios');
-const JSON = {
+export const JSON = {
     id: '1',
     nested: {
         obj: {a: 1, b: 2},
@@ -14,13 +14,14 @@ export function request(url) {
     return axios.get(url)
                 .catch(function (error) {
                     // handle error
-                 //   console.log(error);
+                    //   console.log(error);
 
                 })
                 .then(function (response) {
                     // handle success
-                   // console.log(response);
-                    return JSON;
+                    // console.log(response);
+                    //  return JSON;
+                    return response
                 })
                 .finally(function () {
                     // always executed
