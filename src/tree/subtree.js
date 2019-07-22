@@ -39,6 +39,7 @@ export class JsonSubTree extends React.Component {
 
     render() {
         const {keyName, json} = this.props;
+        const {folded} = this.state;
         let style = {left:  15 + 'px'};
         if(!json){
             return <span></span>
@@ -48,8 +49,8 @@ export class JsonSubTree extends React.Component {
         }
 
         return (<div style={style} className="subTree">
-            {(keyName ? <span className="key">{keyName}:</span>: null)}
-            <span className="data">{this.getDataSpan()}</span>
+            {(keyName ? <span className="key" onClick={this.fold.bind(this)}>{keyName}:</span>: null)}
+            {(folded ? '...':<span className="data">{this.getDataSpan()}</span>)}
         </div>)
 
     }
