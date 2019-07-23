@@ -1,7 +1,7 @@
 import classnames from 'classnames';
 import React from 'react';
+import styles from './Json.module.css';
 import {JsonObject} from "./JsonObject";
-import './Json.css'
 
 export class Json extends React.Component {
     constructor(props) {
@@ -26,7 +26,8 @@ export class Json extends React.Component {
         const {json} = this.props;
         const {folded} = this.state;
 
-        const dotsClass = classnames({hid: !folded});
+        const dotsClass = classnames({[styles.hid]: !folded});
+        console.log(dotsClass);
         if (!json) {
             return null;
         }
@@ -42,10 +43,10 @@ export class Json extends React.Component {
         const {folded} = this.state;
 
         const keyClass = classnames({
-            key: true,
-            'key-minus': !folded,
-            'key-foldable': isFoldable,
-            'key-empty': !keyName
+            [styles.key]: true,
+            [styles.keyMinus]: !folded,
+            [styles.keyFoldable]: isFoldable,
+            [styles.keyEmpty]: !keyName
         });
         return <span className={keyClass} onClick={this.fold.bind(this)}>{keyName ? `${keyName}:` : ''}</span>
     }
@@ -56,11 +57,11 @@ export class Json extends React.Component {
             return <span></span>
         }
         const {folded} = this.state;
-        const jsonClass = classnames({hid: folded});
+        const jsonClass = classnames({[styles.hid]: folded});
 
 
         return (
-            <div className={`json ${className || ''}`}>
+            <div className={`${styles.json} ${className || ''}`}>
                 {this.renderKey()}
                 {this.renderFoldedData()}
                 <JsonObject className={jsonClass} json={json}/>

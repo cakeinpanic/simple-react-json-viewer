@@ -22,15 +22,16 @@
     color: rgba(0, 0, 0, .5);
 }
 
-.key-empty{
+.keyEmpty {
     margin: 0;
 }
-.key-foldable:before {
+
+.keyFoldable:before {
     content: '+';
     text-align: center;
 }
 
-.key-foldable.key-minus:before {
+.keyFoldable.keyMinus:before {
     content: '-';
 }
 

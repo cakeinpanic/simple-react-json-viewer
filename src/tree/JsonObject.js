@@ -1,6 +1,6 @@
 import React from 'react';
 import {Json} from "./Json";
-import './Json.css'
+import styles from './Json.module.css';
 
 export class JsonObject extends React.Component {
     renderArray(json) {
@@ -13,11 +13,11 @@ export class JsonObject extends React.Component {
         return (
             <span className={className}>
                 [
-                    <div className="json">
+                    <div className={styles.json}>
                     {
                         json.map((el, i) => {
                             const lastElement = i === json.length - 1;
-                            return (<span className="json" key={i}>
+                            return (<span className={styles.json} key={i}>
                                 <Json json={el} showComma={!lastElement}/>
                             </span>)
                         })
@@ -35,9 +35,9 @@ export class JsonObject extends React.Component {
         return (
             <span className={className}>
                 &#123;
-                <div className="json">
+                <div className={styles.json}>
                     {Object.keys(json).map((keyName, i) => {
-                        const lastElement = i !== keysArr.length - 1;
+                        const lastElement = i === keysArr.length - 1;
                         const el = json[keyName];
 
                         return (
