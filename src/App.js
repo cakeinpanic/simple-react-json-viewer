@@ -1,7 +1,8 @@
 import React from 'react';
 import './App.css';
 import {Input} from './input/Input';
-import {Json} from './tree/Json';
+import {Json} from "./json/Json";
+
 
 export class App extends React.Component {
     constructor() {
@@ -25,11 +26,10 @@ export class App extends React.Component {
         if (this.state.loading) {
             return null;
         }
-        return this.state.error ? (
-            <div className="error">Error loading</div>
-        ) : (
-            <Json className="json-container" json={this.state.json} />
-        );
+
+        return this.state.error
+            ? <div className="error">Error loading</div>
+            : <Json className="json-container" json={this.state.json}/>;
     }
 
     renderLoader() {
@@ -42,7 +42,7 @@ export class App extends React.Component {
     render() {
         return (
             <div className="app">
-                <Input onDataLoaded={this.dataLoaded} onError={this.onError} onLoading={this.onLoading} />
+                <Input onDataLoaded={this.dataLoaded} onError={this.onError} onLoading={this.onLoading}/>
                 {this.renderLoader()}
                 {this.renderData()}
             </div>

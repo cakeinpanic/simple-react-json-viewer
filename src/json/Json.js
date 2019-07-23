@@ -26,7 +26,7 @@ export class Json extends React.Component {
         const {json} = this.props;
         const {folded} = this.state;
 
-        const dotsClass = classnames({[styles.hid]: !folded});
+        const dotsClass = classnames({[styles.folded]: !folded});
         console.log(dotsClass);
         if (!json) {
             return null;
@@ -46,6 +46,7 @@ export class Json extends React.Component {
             [styles.keyFoldable]: isFoldable,
             [styles.keyEmpty]: !keyName
         });
+
         return (
             <span className={keyClass} onClick={this.fold.bind(this)}>
                 {keyName ? `${keyName}:` : ''}
@@ -58,8 +59,9 @@ export class Json extends React.Component {
         if (!json) {
             return <span></span>;
         }
+
         const {folded} = this.state;
-        const jsonClass = classnames({[styles.hid]: folded});
+        const jsonClass = classnames({[styles.folded]: folded});
 
         return (
             <div className={`${styles.json} ${className || ''}`}>
