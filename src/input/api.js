@@ -6,13 +6,10 @@ export const JSON = {
         arr: [1, 2, 3],
         arrObj: [{c: 2, d: 3, e: {f: 5}}, {m: 4}]
     }
-}
+};
 
 export function request(url) {
-    return axios.get(url)
-                .then(function (response) {
-                    return response.data;
-                });
-
+    return axios.get(url).then(function(response) {
+        return response.data;
+    });
 }
-

@@ -1,6 +1,6 @@
 import React from 'react';
-import {JSON, request} from "./api";
-import styles from './Input.module.css'
+import {JSON, request} from './api';
+import styles from './Input.module.css';
 
 export class Input extends React.Component {
     constructor(props) {
@@ -12,7 +12,6 @@ export class Input extends React.Component {
         this.onDataLoaded = this.props.onDataLoaded;
         this.onError = this.props.onError;
         this.onLoading = this.props.onLoading;
-
     }
 
     componentDidMount() {
@@ -37,9 +36,11 @@ export class Input extends React.Component {
         console.log(styles);
         return (
             <form className={styles.form} onSubmit={this.handleSubmit}>
-                <input className={styles.input} type="text" value={this.state.value} onChange={this.handleChange}/>
-                <button className={styles.btn} onClick={this.handleSubmit}>Go!</button>
+                <input className={styles.input} type="text" value={this.state.value} onChange={this.handleChange} />
+                <button className={styles.btn} onClick={this.handleSubmit}>
+                    Go!
+                </button>
             </form>
-        )
+        );
     }
 }

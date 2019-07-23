@@ -1,7 +1,7 @@
 import classnames from 'classnames';
 import React from 'react';
 import styles from './Json.module.css';
-import {JsonObject} from "./JsonObject";
+import {JsonObject} from './JsonObject';
 
 export class Json extends React.Component {
     constructor(props) {
@@ -12,9 +12,9 @@ export class Json extends React.Component {
     fold() {
         const foldable = !this.isPrimitive();
         if (!foldable) {
-            return
+            return;
         }
-        this.setState(s => ({folded: !s.folded}))
+        this.setState(s => ({folded: !s.folded}));
     }
 
     isPrimitive() {
@@ -31,10 +31,8 @@ export class Json extends React.Component {
         if (!json) {
             return null;
         }
-        const foldedInfo = Array.isArray(json)
-            ? `Array(${json.length})`
-            : `Object(${Object.keys(json).length})`;
-        return (<span className={dotsClass}>{foldedInfo}</span>);
+        const foldedInfo = Array.isArray(json) ? `Array(${json.length})` : `Object(${Object.keys(json).length})`;
+        return <span className={dotsClass}>{foldedInfo}</span>;
     }
 
     renderKey() {
@@ -48,26 +46,28 @@ export class Json extends React.Component {
             [styles.keyFoldable]: isFoldable,
             [styles.keyEmpty]: !keyName
         });
-        return <span className={keyClass} onClick={this.fold.bind(this)}>{keyName ? `${keyName}:` : ''}</span>
+        return (
+            <span className={keyClass} onClick={this.fold.bind(this)}>
+                {keyName ? `${keyName}:` : ''}
+            </span>
+        );
     }
 
     render() {
         const {json, showComma, className} = this.props;
         if (!json) {
-            return <span></span>
+            return <span></span>;
         }
         const {folded} = this.state;
         const jsonClass = classnames({[styles.hid]: folded});
-
 
         return (
             <div className={`${styles.json} ${className || ''}`}>
                 {this.renderKey()}
                 {this.renderFoldedData()}
-                <JsonObject className={jsonClass} json={json}/>
+                <JsonObject className={jsonClass} json={json} />
                 {showComma && !folded ? ',' : null}
             </div>
-        )
-
+        );
     }
 }
