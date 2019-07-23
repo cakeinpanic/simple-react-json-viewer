@@ -1,13 +1,20 @@
 .input {
-    margin: 50px;
-    font-size: 15px;
+    font-size: inherit;
     width: 500px;
     height: 30px;
+    margin-right: 20px;
 }
 
 .btn {
     height: 25px;
     width: 100px;
     cursor: pointer;
+    color: white;
+    font-size: inherit;
     background: cornflowerblue;
+}
+
+.form {
+    margin: 50px;
+    font-size: 15px;
 }

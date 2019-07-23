@@ -35,7 +35,7 @@ export class Input extends React.Component {
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
+            <form className="form" onSubmit={this.handleSubmit}>
                 <input className="input" type="text" value={this.state.value} onChange={this.handleChange}/>
                 <button className="btn" onClick={this.handleSubmit}>Go!</button>
             </form>

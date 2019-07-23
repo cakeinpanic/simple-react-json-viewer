@@ -52,6 +52,10 @@ export class JsonObject extends React.Component {
 
     renderPrimitive(json) {
         const {className} = this.props;
+        const isLink = /(https?:\/\/[^\s]+)/g.test(json);
+        if (isLink){
+            return <a href={json}>{json}</a>
+        }
         return <span className={className}>{json}</span>
     }
 
