@@ -1,30 +1,18 @@
 const axios = require('axios');
 export const JSON = {
-    id: '1',
+    name: 'mocked response',
     nested: {
         obj: {a: 1, b: 2},
         arr: [1, 2, 3],
-        arrObj: [{c: 2, d: 3, e: {f: 5}}]
+        arrObj: [{c: 2, d: 3, e: {f: 5}}, {m: 4}]
     }
 }
 
 export function request(url) {
-    console.log(url);
-// Make a request for a user with a given ID
     return axios.get(url)
-                .catch(function (error) {
-                    // handle error
-                    //   console.log(error);
-
-                })
                 .then(function (response) {
-                    // handle success
-                    // console.log(response);
-                    //  return JSON;
-                    return Array.isArray(response) ? {json:response}: response;
-                })
-                .finally(function () {
-                    // always executed
+                    return response.data;
                 });
+
 }
 

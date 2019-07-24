@@ -1,0 +1,39 @@
+.json {
+    position: relative;
+    text-align: left;
+    left: 15px;
+}
+
+.subTree {
+    position: relative;
+}
+
+.key {
+    font-weight: bold;
+    margin-right: 5px;
+    cursor: pointer;
+    position: relative;
+}
+
+.key:before {
+    content: none;
+    position: absolute;
+    left: -.6em;
+    color: rgba(0, 0, 0, .5);
+}
+
+.key-empty{
+    margin: 0;
+}
+.key-foldable:before {
+    content: '+';
+    text-align: center;
+}
+
+.key-foldable.key-minus:before {
+    content: '-';
+}
+
+.hid {
+    display: none;
+}
