@@ -1,0 +1,11 @@
+.sample{
+    margin: 10px auto 20px;
+    text-align: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid black;
+    font-size: .8em;
+}
+
+.header{
+    text-align: center;
+}

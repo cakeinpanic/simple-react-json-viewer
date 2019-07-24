@@ -1,10 +1,10 @@
 import classnames from 'classnames';
 import React from 'react';
 import {isPrimitiveType} from "../utils/utils";
-import styles from './Json.module.css';
+import styles from './FoldableJson.module.css';
 import {JsonObject} from './JsonObject';
 
-export class Json extends React.Component {
+export class FoldableJson extends React.Component {
     constructor(props) {
         super(props);
         this.state = {folded: false};
