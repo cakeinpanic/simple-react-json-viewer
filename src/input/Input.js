@@ -33,7 +33,6 @@ export class Input extends React.Component {
     }
 
     render() {
-        console.log(styles);
         return (
             <form className={styles.form} onSubmit={this.handleSubmit}>
                 <input className={styles.input} type="text" value={this.state.value} onChange={this.handleChange} />

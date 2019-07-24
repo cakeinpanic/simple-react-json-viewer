@@ -28,7 +28,7 @@ export class Json extends React.Component {
         const {folded} = this.state;
 
         const dotsClass = classnames({[styles.folded]: !folded});
-        console.log(dotsClass);
+
         if (!json) {
             return null;
         }
