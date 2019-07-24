@@ -1,15 +1,15 @@
-const axios = require('axios');
+import axios from 'axios';
+
 export const JSON = {
     name: 'mocked response',
     nested: {
-        obj: {a: 1, b: 2},
+        obj: {a: false, b: null, c: true},
         arr: [1, 2, 3],
         arrObj: [{c: 2, d: 3, e: {f: 5}}, {m: 4}]
     }
 };
 
 function timeout() {
-
     return new Promise((resolve, reject) => {
         const wait = setTimeout(() => {
             reject();

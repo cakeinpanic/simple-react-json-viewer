@@ -1,5 +1,6 @@
 import classnames from 'classnames';
 import React from 'react';
+import {isPrimitiveType} from "../utils/utils";
 import styles from './Json.module.css';
 import {JsonObject} from './JsonObject';
 
@@ -19,7 +20,7 @@ export class Json extends React.Component {
 
     isPrimitive() {
         const {json} = this.props;
-        return typeof json !== 'object' || (Array.isArray(json) && typeof json[0] !== 'object');
+        return isPrimitiveType(json) || (Array.isArray(json) && isPrimitiveType(json[0]));
     }
 
     renderFoldedData() {
@@ -56,7 +57,8 @@ export class Json extends React.Component {
 
     render() {
         const {json, showComma, className} = this.props;
-        if (!json) {
+
+        if (json === undefined) {
             return <span></span>;
         }
 
@@ -67,7 +69,7 @@ export class Json extends React.Component {
             <div className={`${styles.json} ${className || ''}`}>
                 {this.renderKey()}
                 {this.renderFoldedData()}
-                <JsonObject className={jsonClass} json={json} />
+                <JsonObject className={jsonClass} json={json}/>
                 {showComma && !folded ? ',' : null}
             </div>
         );

@@ -1,4 +1,5 @@
 import React from 'react';
+import {isPrimitiveType} from "../utils/utils";
 import {Json} from './Json';
 import styles from './Json.module.css';
 
@@ -19,7 +20,7 @@ export class JsonObject extends React.Component {
                         const lastElement = i === json.length - 1;
                         return (
                             <span className={styles.json} key={i}>
-                                <Json json={el} showComma={!lastElement} />
+                                <Json json={el} showComma={!lastElement}/>
                             </span>
                         );
                     })}
@@ -41,7 +42,7 @@ export class JsonObject extends React.Component {
                         const lastElement = i === keysArr.length - 1;
                         const el = json[keyName];
 
-                        return <Json json={el} keyName={keyName} key={i} showComma={!lastElement} />;
+                        return <Json json={el} keyName={keyName} key={i} showComma={!lastElement}/>;
                     })}
                 </div>
                 &#125;
@@ -52,24 +53,29 @@ export class JsonObject extends React.Component {
     renderPrimitive(json) {
         const {className} = this.props;
         const isLink = /^(https?:\/\/[^\s]+)/g.test(json);
+
+        if (json === null) {
+            json = 'null';
+        }
+
+        if (typeof json === 'boolean') {
+            json = json.toString();
+        }
+
         if (isLink) {
-            return <a  className={className} href={json}>{json}</a>;
+            return <a className={className} href={json}>{json}</a>;
         }
         return <span className={className}>{json}</span>;
     }
 
     render() {
         const {json} = this.props;
-
-        if (!json) {
-            return <span></span>;
-        }
-
+        debugger
         if (Array.isArray(json)) {
             return this.renderArray(json);
         }
 
-        if (typeof json === 'object') {
+        if (!isPrimitiveType(json)) {
             return this.renderObject(json);
         }
 
