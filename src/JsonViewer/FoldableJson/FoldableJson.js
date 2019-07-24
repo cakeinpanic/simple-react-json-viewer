@@ -10,6 +10,10 @@ export class FoldableJson extends React.Component {
         this.state = {folded: false};
     }
 
+    shouldComponentUpdate(newProps, newState) {
+        return newState.folded !== this.state.folded
+    }
+
     fold() {
         const foldable = !this.isPrimitive();
         if (!foldable) {
