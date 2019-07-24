@@ -8,8 +8,18 @@ export const JSON = {
     }
 };
 
+function timeout() {
+
+    return new Promise((resolve, reject) => {
+        const wait = setTimeout(() => {
+            reject();
+            clearTimeout(wait)
+        }, 2000);
+    })
+}
+
 export function request(url) {
-    return axios.get(url).then(function(response) {
+    return Promise.race([axios.get(url), timeout()]).then(function (response) {
         return response.data;
     });
 }
