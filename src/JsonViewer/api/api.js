@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const JSON = {
+export const MOCK_JSON = {
     name: 'mocked response',
     nested: {
         obj: {a: false, b: null, c: true},
