@@ -9,12 +9,14 @@
     "react-dom": "^16.8.6",
     "react-scripts": "3.0.1"
   },
+  "homepage": "https://cakeinpanic.github.io/simple-react-json-viewer",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "prettier": "prettier --write 'src/**/*.js'"
+    "prettier": "prettier --write 'src/**/*.js'",
+    "publish": "npm run build && mv build/** ."
   },
   "eslintConfig": {
     "extends": "react-app"
