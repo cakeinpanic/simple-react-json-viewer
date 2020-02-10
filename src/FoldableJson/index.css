@@ -1,0 +1,50 @@
+.json {
+    position: relative;
+    text-align: left;
+    left: 15px;
+}
+
+.subTree {
+    position: relative;
+}
+
+.key {
+    font-weight: bold;
+    color: #333;
+    margin-right: 8px;
+    cursor: pointer;
+    position: relative;
+}
+
+.key:before {
+    content: none;
+    position: absolute;
+    left: -.8em;
+    /* color: rgba(0, 0, 0, .5);
+     */
+     margin-right: 30px !important;
+}
+
+.keyEmpty {
+    margin: 0;
+}
+
+.keyFoldable:before {
+    content: '+';
+    text-align: center;
+    font-size: 25px !important;
+    margin-top: -10px;
+    color: green;
+
+}
+
+.keyFoldable.keyMinus:before {
+    content: '-';
+    font-size: 25px !important;
+    margin-top: -10px;
+    color: indianred;
+}
+
+.folded {
+    display: none;
+}
