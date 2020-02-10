@@ -1,0 +1,55 @@
+/* 
+colors to use
+    lightsalmon : #ffa07a
+    coral : #ff7f50
+    tomato : #ff6347
+    coral : #ff4500
+    darkorange : #ff8c00
+    orange : #ffA500
+*/
+
+.input[type=text] {
+    font-size: inherit;
+    width: 500px;
+    height: 29px;
+    margin-right: 20px;
+    padding: 4px 10px;
+    border-radius: 50px;
+    border: 1.5px solid coral;
+    -webkit-transition: all 0.30s ease-in-out;
+    -moz-transition: all 0.30s ease-in-out;
+    -ms-transition: all 0.30s ease-in-out;
+    -o-transition: all 0.30s ease-in-out;
+    outline: none;
+    margin-top:10px;
+}
+
+.input[type=text]:focus {
+    border: 1.5px solid lightsalmon;
+    box-shadow: 0 0 5px lightsalmon;
+}
+
+.btn {
+    height: 40px;
+    cursor: pointer;
+    color: white;
+    border:none;
+    font-size: 12px !important;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+    border-radius: 50px;
+    background: coral;
+    padding: 0 20px;
+    margin-top:10px;
+}
+
+/* for accessiblity */
+.btn:hover{
+    background:tomato;
+}
+
+.form {
+    margin: 30px 0 50px;
+    font-size: 15px;
+}
