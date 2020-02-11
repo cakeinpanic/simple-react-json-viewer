@@ -23,7 +23,7 @@ export class UrlInputForm extends React.Component {
 
     render() {
         const placeholder = 'http://url.to.get/json';
-        const helperLink  = 'https://api.github.com/users/cakeinpanic';
+        const helperLink  = 'http://dummy.restapiexample.com/api/v1/employees';
 
         return (
             <form className="form" onSubmit={this.handleSubmit}>
