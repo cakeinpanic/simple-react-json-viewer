@@ -47,3 +47,7 @@ export async function request(url) {
     const response = await Promise.race([fetchResult(url), timeout()]);
     return response;
 }
+
+export async function parseJSON(data) {
+    return await JSON.parse(data);
+}
