@@ -51,12 +51,12 @@ export class Main extends React.Component {
 
     render() {
         return (
-            <React.Fragment>
+            <div className="container">
                 <h1 className="header">Simple JSON Viewer</h1>
                 <UrlInputForm onFormSubmitted={this.handleFormSubmitted}/>
                 {this.renderLoader()}
                 {this.renderData()}
-            </React.Fragment>
+            </div>
         );
     }
 

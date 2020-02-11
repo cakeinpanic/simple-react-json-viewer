@@ -5,7 +5,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: rgb(255, 240, 235);
-  padding: 5vmin;
+  padding: 0;
 }
 
 code {
@@ -15,4 +15,7 @@ code {
 
 .header{
   color:tomato;
+}
+.container{
+  margin:25px;
 }

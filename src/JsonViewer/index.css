@@ -1,7 +1,10 @@
 .json {
     position: relative;
     text-align: left;
-    left: 15px;
+    left: 25px;
+    width: 90vw;
+    display: block;
+    margin: 3px 6px;
 }
 
 .subTree {
