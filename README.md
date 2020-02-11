@@ -25,7 +25,7 @@ npm start
 
 ## TODO
 
-- [ ] To remove the dependency of classnames from component.
+- [x] To remove the dependency of classnames from component.
 
 ## Forked From & Thanks
 Demo: https://cakeinpanic.github.io/simple-react-json-viewer/

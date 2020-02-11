@@ -1,4 +1,3 @@
-import classnames from 'classnames';
 import React from 'react';
 import {isPrimitiveType} from "./utils";
 import {JsonObject} from './JsonObject';
@@ -33,12 +32,12 @@ export default class JsonViewer extends React.Component {
         const {json} = this.props;
         const {folded} = this.state;
 
-        const dotsClass = classnames({"folded": !folded});
+        const dotsClass = !folded ? "folded" : ''; 
 
         if (!json) {
             return null;
         }
-        const foldedInfo = Array.isArray(json) ? `Array(${json.length})` : `{...} ${Object.keys(json).length} items`;
+        const foldedInfo = Array.isArray(json) ? `[...] ${json.length} items` : `{...} ${Object.keys(json).length} items`;
         return <span className={dotsClass}>{foldedInfo}</span>;
     }
 
@@ -46,16 +45,9 @@ export default class JsonViewer extends React.Component {
         const {keyName} = this.props;
         const isFoldable = !this.isPrimitive();
         const {folded} = this.state;
-
-        const keyClass = classnames({
-            "key": true,
-            "keyMinus": !folded,
-            "keyFoldable": isFoldable,
-            "keyEmpty": !keyName
-        });
-
+      
         return (
-            <span className={keyClass} onClick={this.fold.bind(this)}>
+            <span className={`key ${!folded ? "keyMinus": ''} ${isFoldable ? "keyFoldable": ''} ${!keyName ? "keyEmpty": ''}`} onClick={this.fold.bind(this)}>
                 {keyName ? `${keyName}:` : ''}
             </span>
         );
@@ -69,7 +61,7 @@ export default class JsonViewer extends React.Component {
         }
 
         const {folded} = this.state;
-        const jsonClass = classnames({"folded": folded});
+        const jsonClass = folded ? "folded" : '';
 
         return (
             <div className={`"json" ${className || ''}`}>
