@@ -17,14 +17,17 @@ export class UrlInputForm extends React.Component {
 
     handleSubmit(type,event) {
         event.preventDefault();
-        console.log(this.state.set_value,this.state.get_value,JSON.parse(this.state.set_value))
-        type==='get'?this.onFormSubmitted(this.state.get_value,'get'):this.onFormSubmitted(this.state.set_value,'set');
+        type === 'get'
+        ?
+        this.onFormSubmitted(this.state.get_value, 'get')
+        :
+        this.onFormSubmitted(this.state.set_value, 'set');
     }
     
 
     render() {
-        const placeholder_input = 'http://url.to.get/json';
-        const helperlink  = 'http://dummy.restapiexample.com/api/v1/employees';
+        const placeholder_input = 'https://url.to.get/json';
+        const helperlink  = 'https://api.github.com/users';
         const placeholder_textarea = {
             ipsum: "lorem",
             lorem: [
@@ -56,6 +59,7 @@ export class UrlInputForm extends React.Component {
                 <button className="btn" onClick={(event) => this.handleSubmit('set', event)}>
                 Set JSON
                 </button>
+                <p><strong>Note:</strong> If nothing has changed on pressing buttons that is may be because of wrong input.</p>
             </form>
         );
     }
