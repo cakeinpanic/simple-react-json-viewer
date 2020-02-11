@@ -41,7 +41,7 @@ export class JsonObject extends React.Component {
                     {Object.keys(json).map((keyName, i) => {
                         const lastElement = i === keysArr.length - 1;
                         const el = json[keyName];
-
+                        
                         return <JsonViewer json={el} keyName={keyName} key={i} showComma={!lastElement}/>;
                     })}
                 </div>
