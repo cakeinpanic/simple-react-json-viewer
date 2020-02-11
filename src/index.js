@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import {MOCK_JSON, request} from "./api/api";
+import {MOCK_JSON, request, parseJSON} from "./api/api";
 import {UrlInputForm} from "./UrlInputForm/UrlInputForm";
 import JsonViewer from "./JsonViewer";
 
@@ -15,19 +15,23 @@ export class Main extends React.Component {
             loading: false 
         }
     }
+
     onDataLoaded = data => {
         this.setState(() => ({ json: data, error: false, loading: false }));
         console.log("State Value:",this.state.json)
     };
+
     onError = () => {
         this.setState(() => ({json: null, error: true, loading: false}));
     };
+
     renderLoader() {
         if (!this.state.loading) {
             return null;
         }
         return <span>Loading....</span>;
     }
+
     renderData() {
         if (this.state.loading) {
             return null;
@@ -37,23 +41,28 @@ export class Main extends React.Component {
             ? <div>Error loading</div>
             : <JsonViewer json={this.state.json}/>;
     }
-    handleFormSubmitted = (src) => {
+
+    handleFormSubmitted = (src,type) => {
         this.setState(() => ({
             loading: true
         }));
-
-        request(src)
-            .then(data => {
-                this.onDataLoaded(data);
-            })
-            .catch(() => this.onError());
+        console.log(type,src,"testing in hndlle")
+        type === 'get'
+            ?
+            request(src)
+                .then((data) => { this.onDataLoaded(data);console.log(data) })
+                .catch(() => this.onError())
+            :
+            parseJSON(src)
+                .then((data) => { this.onDataLoaded(data);console.log(data) })
+                .catch(() => this.onError());
     };
 
     render() {
         return (
             <div className="container">
                 <h1 className="header">Simple JSON Viewer</h1>
-                <UrlInputForm onFormSubmitted={this.handleFormSubmitted}/>
+                <UrlInputForm onFormSubmitted={this.handleFormSubmitted} />
                 {this.renderLoader()}
                 {this.renderData()}
             </div>

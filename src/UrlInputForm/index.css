@@ -24,7 +24,23 @@ colors to use
     margin-top:10px;
 }
 
-.input[type=text]:focus {
+.input-textarea{
+    font-size: inherit;
+    width: 500px;
+    height: 300px;
+    margin-right: 20px;
+    padding: 4px 10px;
+    border-radius: 5px;
+    border: 1.5px solid coral;
+    -webkit-transition: all 0.30s ease-in-out;
+    -moz-transition: all 0.30s ease-in-out;
+    -ms-transition: all 0.30s ease-in-out;
+    -o-transition: all 0.30s ease-in-out;
+    outline: none;
+    margin-top:10px;
+}
+
+.input[type=text]:focus .input-textarea[type=textarea]:focus{
     border: 1.5px solid lightsalmon;
     box-shadow: 0 0 5px lightsalmon;
 }
