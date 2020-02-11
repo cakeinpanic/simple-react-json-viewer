@@ -23,6 +23,33 @@ Run Project
 npm start
 ```
 
+## Use Case
+
+```js
+import React from 'react';
+import JsonViwer from './JsonViwer'
+
+//using mock data for test
+const MOCK_DATA = {
+    name: "Additya Rajput",
+    skills: ['Javascript', 'HTML', 'CSS', 'Typescript', 'React'],
+    address: {
+        place: "bengaluru",
+        pincode: 560095
+    },
+    github_url: "https://github.com/apsrcreatix"
+}
+
+//this wrapper is just an example and not needed
+export default function Wrapper(props){
+    return <div className="wrapper">
+		<JsonViwer json={ MOCK_DATA || props.json } />
+         </div>
+}
+```
+
+
+
 ## TODO
 
 - [x] To remove the dependency of classnames from component.
