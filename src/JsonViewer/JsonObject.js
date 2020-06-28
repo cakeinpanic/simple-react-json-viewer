@@ -1,7 +1,7 @@
 import React from 'react';
-import {isPrimitiveType} from "../utils/utils";
-import {FoldableJson} from './FoldableJson';
-import styles from './FoldableJson.module.css';
+import { isPrimitiveType } from "./utils";
+import  JsonViewer  from './index';
+import './index.css';
 
 export class JsonObject extends React.Component {
     renderArray(json) {
@@ -15,12 +15,12 @@ export class JsonObject extends React.Component {
         return (
             <span className={className}>
                 [
-                <div className={styles.json}>
+                <div className="json">
                     {json.map((el, i) => {
                         const lastElement = i === json.length - 1;
                         return (
-                            <span className={styles.json} key={i}>
-                                <FoldableJson json={el} showComma={!lastElement}/>
+                            <span className="json" key={i}>
+                                <JsonViewer json={el} showComma={!lastElement}/>
                             </span>
                         );
                     })}
@@ -37,12 +37,12 @@ export class JsonObject extends React.Component {
         return (
             <span className={className}>
                 {'{'}
-                <div className={styles.json}>
+                <div className="json">
                     {Object.keys(json).map((keyName, i) => {
                         const lastElement = i === keysArr.length - 1;
                         const el = json[keyName];
-
-                        return <FoldableJson json={el} keyName={keyName} key={i} showComma={!lastElement}/>;
+                        
+                        return <JsonViewer json={el} keyName={keyName} key={i} showComma={!lastElement}/>;
                     })}
                 </div>
                 {'}'}
